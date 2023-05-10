@@ -1,0 +1,23 @@
+[package]
+name = "gcode"
+version = "0.1.0"
+edition = "2021"
+resolver = "2"
+publish = false
+
+[dependencies]
+cfg-if = "1.0"
+defmt = { version = "0.3", default-features = false, optional = true }
+document-features = "0.2"
+
+[features]
+
+## Enable support for the [`defmt`](https://github.com/knurling-rs/defmt) crate.
+defmt = ["dep:defmt"]
+
+## Use binary shift-left operations for checked multiplication by ten.
+##
+## Checked multiplication by ten is at the core of the G-code parser. This
+## particular optimization can increase the performance of the parser by up to
+## 40% on 32-bit ARM targets.
+mul10_by_shl = []
